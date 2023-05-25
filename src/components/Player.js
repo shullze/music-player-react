@@ -35,6 +35,15 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
         })
     }
 
+    function dragHnadler(event){
+        audioRef.current.currentTime = event.target.value
+        setSongInfo(prevState => {
+            return(
+                {...prevState, currentTime: event.target.value}
+            )
+        })
+    }
+
     // function to format time
     function getTime(time){
         return(
@@ -51,6 +60,7 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
                     min={0}
                     max={songInfo.duration}
                     value={songInfo.currentTime}
+                    onChange={dragHnadler}
                 />
                 <p>{getTime(songInfo.duration)}</p>
             </div>
