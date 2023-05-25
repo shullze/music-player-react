@@ -6,8 +6,16 @@
 
 h1, h2, h3{
   color: rgb(110, 109, 109);
-
 }
 
+body{
+  font-family: 'Lato', sans-serif;
+}
+
+h3,h4{
+  font-weight: 400;
+  color: rgb(100, 100, 100);
+}
 @import "src/styles/Player";
 @import "src/styles/Song";
+@import "src/styles/Library";
