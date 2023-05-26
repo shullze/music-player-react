@@ -1,14 +1,33 @@
 import React, {useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"; //component itself
 import {faPlay, faAngleLeft, faAngleRight, faPause} from "@fortawesome/free-solid-svg-icons"; // actual icons
-import {useRef} from "react";
+import {useRef, useEffect} from "react";
 
-function Player({currentSong, isPlaying, setIsPlaying, songs, setCurrentSong}) {
+function Player({currentSong, isPlaying, setIsPlaying, songs, setCurrentSong, setSongs}) {
 
     const [songInfo, setSongInfo] = useState({
         currentTime: 0,
         duration: 0,
     })
+
+    useEffect(()=>{
+        const changeSongActiveStatus = songs.map(
+         song => {
+             if(song.id === currentSong.id){
+                 return{
+                     ...song,
+                     active: true,
+                 };
+             }else {
+                 return {
+                     ...song,
+                     active: false,
+                 };
+             }
+         }
+        )
+        setSongs(changeSongActiveStatus)
+    }, [currentSong])
 
     const audioRef = useRef(null)
 
