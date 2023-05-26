@@ -8,6 +8,7 @@ function Player({currentSong, isPlaying, setIsPlaying, songs, setCurrentSong, se
     const [songInfo, setSongInfo] = useState({
         currentTime: 0,
         duration: 0,
+        percentage: 0
     })
 
     useEffect(()=>{
@@ -44,11 +45,15 @@ function Player({currentSong, isPlaying, setIsPlaying, songs, setCurrentSong, se
     function timeUpdateHandler(event){
         const songCurrentTime = event.target.currentTime;
         const songDuration = event.target.duration;
+        const roundedCurrentTime = Math.round(songCurrentTime)
+        const roundedDuration = Math.round(songDuration)
+        const animationPercentage = Math.round((roundedCurrentTime/roundedDuration)*100)
         setSongInfo(prevState => {
             return(
                 {...prevState,
                     currentTime: songCurrentTime,
-                    duration: songDuration
+                    duration: songDuration,
+                    animationPercentage: animationPercentage
                 }
             )
         })
@@ -90,17 +95,24 @@ function Player({currentSong, isPlaying, setIsPlaying, songs, setCurrentSong, se
         }
     }
 
+    const trackAnimation = {
+        transform: `translateX(${songInfo.animationPercentage}%)`
+    }
+
     return (
         <div className='player'>
             <div className='time-control'>
                 <p>{getTime(songInfo.currentTime)}</p>
-                <input
-                    type='range'
-                    min={0}
-                    max={songInfo.duration || 0}
-                    value={songInfo.currentTime}
-                    onChange={dragHnadler}
-                />
+                <div style={{background: `linear-gradient(to right, ${currentSong.color[0]},${currentSong.color[1]})`}} className='track'>
+                    <input
+                        type='range'
+                        min={0}
+                        max={songInfo.duration || 0}
+                        value={songInfo.currentTime}
+                        onChange={dragHnadler}
+                    />
+                    <div style={trackAnimation} className='animate-track'></div>
+                </div>
                 <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
             </div>
             <div className='play-control'>
