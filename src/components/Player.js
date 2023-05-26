@@ -101,7 +101,7 @@ function Player({currentSong, isPlaying, setIsPlaying, songs, setCurrentSong, se
                     value={songInfo.currentTime}
                     onChange={dragHnadler}
                 />
-                <p>{getTime(songInfo.duration)}</p>
+                <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
             </div>
             <div className='play-control'>
                 <FontAwesomeIcon
