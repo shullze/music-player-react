@@ -51,6 +51,12 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
         )
     }
 
+    function autoPlayHandler(){
+        if(isPlaying){
+            audioRef.current.play()
+        }
+    }
+
     return (
         <div className='player'>
             <div className='time-control'>
@@ -87,6 +93,7 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
                 ref={audioRef}
                 onTimeUpdate={timeUpdateHandler}
                 onLoadedMetadata={timeUpdateHandler}
+                onLoadedData={autoPlayHandler}
             >
 
             </audio>
