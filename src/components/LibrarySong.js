@@ -1,16 +1,33 @@
 import React from 'react';
 
-function LibrarySong({song, songs, setCurrentSong, id}) {
+function LibrarySong({song, songs, setCurrentSong, id, setSongs}) {
 
     function songSelectHandler(){
         const selectedSong = songs.filter(
             (song) => song.id === id
         )
         setCurrentSong(selectedSong[0])
+
+        const changeSongActiveStatus = songs.map(
+         song => {
+             if(song.id === id){
+                 return{
+                     ...song,
+                     active: true,
+                 };
+             }else {
+                 return {
+                     ...song,
+                     active: false,
+                 };
+             }
+         }
+        )
+        setSongs(changeSongActiveStatus)
     }
 
     return (
-        <div className='library-song' onClick={songSelectHandler}>
+        <div className={`library-song ${song.active ? 'selected' : ''}`} onClick={songSelectHandler}>
             <img
                 alt={song.name}
                 src={song.cover}
