@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Introduction
+This project is a ReactJS-based implementation of a modern audio player that aims to provide a seamless and enjoyable music listening experience. The purpose of this project is to showcase the capabilities of ReactJS and to demonstrate the development of an aesthetically pleasing and user-friendly audio player interface.
+
+## Disclaimer
+The songs utilized in this project are solely for display purposes and are not intended to infringe upon any copyright laws. All songs used in this project were obtained from the official website of Chillhop Music (https://chillhop.com/), a platform that offers a wide range of copyright-cleared music for personal and non-commercial use.
+
 ## Available Scripts
 
 In the project directory, you can run:
