@@ -16,6 +16,15 @@ h3,h4{
   font-weight: 400;
   color: rgb(100, 100, 100);
 }
+
+.App{
+  transition: all 0.5s ease;
+}
+
+.library-active{
+  margin-left: 20%;
+}
+
 @import "src/styles/Player";
 @import "src/styles/Song";
 @import "src/styles/Library";

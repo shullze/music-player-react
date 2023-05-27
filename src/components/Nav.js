@@ -11,7 +11,7 @@ function Nav({libraryStatus, setLibraryStatus}) {
     return (
         <nav>
             <h1>Ripple</h1>
-            <button onClick={libraryStatusHandler}>
+            <button onClick={libraryStatusHandler} className={libraryStatus ? "library-active" : ""}>
                 Library
                 <FontAwesomeIcon icon={faMusic}/>
             </button>

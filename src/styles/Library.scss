@@ -9,6 +9,7 @@
   transform: translateX(-100%);
   transition: all 0.5s ease;
   opacity: 0;
+  background: white;
   h2{
     padding: 2rem;
   }
@@ -19,6 +20,7 @@
   align-items: center;
   padding: 1rem 2rem 1rem 2rem;
   cursor: pointer;
+  transition: background 0.7s ease;
   img{
     width: 30%;
   }
@@ -42,6 +44,18 @@
   scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
 
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.7);
+  border-radius: 20px;
+  border: transparent;
+}
+
 .selected{
   background: rgb(126, 164, 231);
 }
@@ -49,4 +63,10 @@
 .active-library{
   transform: translateX(0%);
   opacity: 1;
+}
+
+@media screen and (max-width:768px) {
+  .library{
+    width: 100%;
+  }
 }
